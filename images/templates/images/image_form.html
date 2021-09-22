@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Загрузить изображение {% endblock title%}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static '/dist/basic.css' %}">  
+<link rel="stylesheet" type="text/css" href="{% static '/dist/dropzone.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+    <form action="api/v1/image-upload/" class="dropzone" id="img-dropzone">
+        <div class="dz-message">Нажмите или перетащите сюда файлы для загрузки</div>
+        {% csrf_token %}
+    </form>
+    <br>
+    <p><a href="{% url "images:list" %}">Посмотреть список изображений</a></p>
+{% endblock content %}
+
+{% block script %}
+  <script src="{% static '/dist/dropzone.js' %}"></script>
+  <script src="{% static '/dropzone.js' %}"></script>
+{% endblock script %}

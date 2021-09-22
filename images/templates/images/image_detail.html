@@ -5,5 +5,8 @@
     <h2> {{ object.image.name }} </h2>
     <p><img src="{{ object.image.url }}"></p>
     <br>
-    <p><a href="{% url "images:index" %}">Назад к списку</a></p>
+    <p><a href="{% url "images:list" %}">Посмотреть список изображений</a></p>
+    <p>
+        <button type="submit" onClick="location.href='{% url "images:upload" %}'">Загрузить изображение</button>
+    </p>
 {% endblock content %}
