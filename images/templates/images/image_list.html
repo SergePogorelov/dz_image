@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Список изображений {% endblock title%}
+
+{% block stylesheet %}
+  <link rel="stylesheet" type="text/css" href="{% static '/dist/basic.css' %}">  
+  <link rel="stylesheet" type="text/css" href="{% static '/dist/dropzone.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+
+    <form action="/image-upload" class="dropzone" id="img-dropzone">
+        <div class="dz-message">Нажмите или перетащите сюда файлы для загрузки</div>
+        {% csrf_token %}
+    </form>
+
+    <h2> Список изображений</h1>
+
+    {% for object in object_list %}
+        <li><a href="{% url "images:detail" object.pk %}">{{ object.image.name }}</a></li>
+    {% empty%}
+        <li>Нет доступных изображений. Загрузите!</li>
+    {% endfor %}
+
+{% endblock content %}
+
+{% block script %}
+  <script src="{% static '/dist/dropzone.js' %}"></script>
+{% endblock script %}

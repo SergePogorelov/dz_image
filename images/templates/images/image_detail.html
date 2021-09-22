@@ -1,0 +1,9 @@
+{% extends "base.html" %} 
+{% block title %} {{ object.image.name }} {% endblock title %}
+
+{% block content %}
+    <h2> {{ object.image.name }} </h2>
+    <p><img src="{{ object.image.url }}"></p>
+    <br>
+    <p><a href="{% url "images:index" %}">Назад к списку</a></p>
+{% endblock content %}
